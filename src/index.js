@@ -4,16 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const notes = [
-  { id: 1, content: "This is my first note", important: true },
-  { id: 2, content: "This is my second note", important: false },
-];
-
 const rootElem = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElem);
 root.render(
   <React.StrictMode>
-    <App notes={notes} />
+    <App />
   </React.StrictMode>
 );
 

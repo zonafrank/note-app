@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Note from "./components/Note";
 import "./App.css";
 
-function App(props) {
-  const [notes, setNotes] = useState(props.notes);
+function App() {
+  const [notes, setNotes] = useState([]);
   const [newItem, setNewItem] = useState("");
   const [showAll, setShowAll] = useState(true);
+
+  useEffect(() => {
+    axios.get("http://localhost:3002/notes").then((response) => {
+      setNotes(response.data);
+    });
+  }, []);
 
   const getMaxId = () => {
     const maxId = Math.max(...notes.map((n) => n.id));
